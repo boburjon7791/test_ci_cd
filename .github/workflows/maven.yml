@@ -30,7 +30,7 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
     - name: Login to dockerhub
-      uses: test_ci_cd/docker-build-push@v5
+      uses: bobur7761/test_ci_cd@v5
       with:
         image: bobur7761/test_ci_cd
         tags: latest
