@@ -38,13 +38,16 @@ jobs:
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Publish image to docker hub
+      run: docker push bobur7761/test_ci_cd:latest
   deploy:
-    runs-on: self-hosted
     needs: build
+    runs-on: [DESKTOP-R8TBSUP]
     steps:
-      - name: Get artifacts
-        uses: mr-smithers-excellent/docker-build-push@v5
-        with:
-          name: test_ci_cd
-      - name: Deploy
-        run: ls test_ci_cd.jar
+      - name: Pull image from docker hub
+        run: docker pull bobur7761/test_ci_cd:latest
+      - name: Delete old container
+        run: docker rm -f test_ci_cd-container
+      - name: Run docker container
+        run: dicker run -d -p 8080:8080 --name test_ci_cd-container bobur7761/test_ci_cd
+
