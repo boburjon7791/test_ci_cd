@@ -42,7 +42,7 @@ jobs:
       run: docker push bobur7761/test_ci_cd:latest
   deploy:
     needs: build
-    runs-on: [DESKTOP-R8TBSUP]
+    runs-on: [booburjon-VirtualBox]
     steps:
       - name: Pull image from docker hub
         run: docker pull bobur7761/test_ci_cd:latest
