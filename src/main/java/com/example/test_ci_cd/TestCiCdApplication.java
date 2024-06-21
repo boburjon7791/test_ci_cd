@@ -14,6 +14,6 @@ public class TestCiCdApplication {
 	}
 	@GetMapping
 	public String hello(){
-		return "hello-v1";
+		return "hello-v2";
 	}
 }
