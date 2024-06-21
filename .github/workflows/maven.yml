@@ -36,7 +36,7 @@ jobs:
         run: docker push bobur7761/test_ci_cd:latest
   deploy:
     needs: build
-    runs-on: [booburjon-VirtualBox]
+    runs-on: self-hosted
     steps:
       - name: Pull Image from Docker hub
         run: docker pull bobur7761/test_ci_cd:latest
