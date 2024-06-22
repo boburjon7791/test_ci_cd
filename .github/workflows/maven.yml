@@ -44,6 +44,6 @@ jobs:
         run: docker rm -f test_ci_cd-container
       - name: Pull and run with Docker Compose
         run: |
-          docker-compose -f docker-compose.yml down
-          docker-compose -f docker-compose.yml pull
-          docker-compose -f docker-compose.yml up -d
+          docker-compose down
+          docker-compose pull
+          docker-compose up -d
