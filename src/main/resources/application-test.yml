@@ -3,6 +3,7 @@ spring:
     url: jdbc:postgresql://127.0.0.1:5432/test_ci_cd
     username: myuser
     password: 123
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
