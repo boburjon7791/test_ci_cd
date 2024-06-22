@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: test_ci_cd
+  profiles:
+    active: test
+server:
+  port: 8080

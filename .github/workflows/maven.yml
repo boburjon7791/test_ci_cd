@@ -42,5 +42,8 @@ jobs:
         run: docker pull bobur7761/test_ci_cd:latest
       - name: Delete old container
         run: docker rm -f test_ci_cd-container
-      - name: Run docker container
-        run: docker run -d -p 8080:8080 --name test_ci_cd-container bobur7761/test_ci_cd
+      - name: Pull and run with Docker Compose
+        run: |
+          docker-compose down
+          docker-compose pull
+          docker-compose up -d
