@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/posts/")
+@RequestMapping("/posts")
 @RequiredArgsConstructor
 public class PostController {
     private final PostRepository postRepository;
