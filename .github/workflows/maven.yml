@@ -41,6 +41,6 @@ jobs:
       - name: Pull Image from Docker hub
         run: docker pull bobur7761/test_ci_cd:latest
       - name: Delete old container
-        run: docker rm -f test_ci_cd-container
-      - name: Pull and run with Docker Compose
-        run: docker run -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}} -d --name test_ci_cd-container test_ci_cd
+        run: docker rm -f test_ci_cd-container || true
+      - name: Run new container
+        run: docker run -d -p 8080:8080 --name test_ci_cd-container bobur7761/test_ci_cd
