@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   db:
+    restart: always
     image: postgres:15
     container_name: postgres_db
     environment:
@@ -16,6 +17,7 @@ services:
       - app-network
 
   app:
+    restart: always
     image: bobur7761/test_ci_cd:latest
     container_name: test_app
     ports:

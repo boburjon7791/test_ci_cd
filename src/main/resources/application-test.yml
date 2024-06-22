@@ -6,7 +6,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update # or your preferred strategy (e.g., validate, create, create-drop)
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true

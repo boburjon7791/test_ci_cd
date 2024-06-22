@@ -38,8 +38,6 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-      - name: Delete old container
-        run: docker rm -f test_ci_cd-container && docker rm -f postgres_db
       - name: Checkout source
         uses: actions/checkout@v3
       - name: Login to Docker Hub
