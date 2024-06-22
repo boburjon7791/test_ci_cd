@@ -42,7 +42,5 @@ jobs:
         run: docker pull bobur7761/test_ci_cd:latest
       - name: Delete old container
         run: docker rm -f test_ci_cd-container
-      - name: Login to docker hub
-        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Pull and run with Docker Compose
-        run: docker run -d --name test_ci_cd-container test_ci_cd
+        run: docker run -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}} -d --name test_ci_cd-container test_ci_cd
