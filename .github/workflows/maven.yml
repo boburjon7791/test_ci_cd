@@ -40,6 +40,8 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
+      - name: Delete old container
+        run: docker rm -f test_ci_cd-container
       - name: Login to Docker Hub
         run: echo ${{secrets.DOCKER_PASSWORD}} | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
       - name: Pull and Start services using Docker Compose
