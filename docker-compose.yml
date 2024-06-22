@@ -4,8 +4,8 @@ services:
     image: postgres:15
     environment:
       POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: mydatabase
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: test_ci_cd
     ports:
       - "5432:5432"
     volumes:

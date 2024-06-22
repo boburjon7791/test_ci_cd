@@ -43,7 +43,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f test_ci_cd-container
       - name: Pull and run with Docker Compose
-        run: |
-          docker-compose down
-          docker-compose pull
-          docker-compose up -d
+        run: docker run -d --name test_ci_cd-container test_ci_cd
