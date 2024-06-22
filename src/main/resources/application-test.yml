@@ -8,6 +8,3 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
