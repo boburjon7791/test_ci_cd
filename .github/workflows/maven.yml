@@ -10,9 +10,9 @@ name: ci cd in java spring boot
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "prod" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "prod" ]
 
 jobs:
   build:
