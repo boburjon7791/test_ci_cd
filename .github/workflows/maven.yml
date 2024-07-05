@@ -44,6 +44,7 @@ jobs:
         run: echo ${{secrets.DOCKER_PASSWORD}} | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
       - name: Pull and Start services using Docker Compose
         run: |
+          docker image prune
           docker-compose down
           docker-compose pull
           docker-compose up -d
