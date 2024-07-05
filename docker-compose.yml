@@ -28,7 +28,7 @@ services:
 
   app:
     restart: always
-    image: test_ci_cd
+    image: bobur7761/test_ci_cd:latest
     container_name: test_ci_cd-container
     ports:
       - "8080:8080"
