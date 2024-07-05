@@ -2,6 +2,8 @@ version: '3.8'
 
 services:
   nginx:
+    restart: always
+    container_name: nginx_container
     image: nginx:latest
     ports:
       - "80:80"
