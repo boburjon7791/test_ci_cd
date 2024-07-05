@@ -4,7 +4,7 @@ services:
   nginx:
     restart: always
     container_name: nginx_container
-    image: nginx:latest
+    image: nginx:1.25.1
     ports:
       - "80:80"
     volumes:
