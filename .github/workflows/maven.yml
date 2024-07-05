@@ -15,12 +15,12 @@ on:
     branches: [ "prod" ]
 
 jobs:
-#  build:
+  connect:
 
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout source
-#        uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
 #      - name: Set up JDK 21
 #        uses: actions/setup-java@v4
 #        with:
@@ -35,7 +35,7 @@ jobs:
 #      - name: Publish Docker Image
 #        run: docker push bobur7761/test_ci_cd:latest
   deploy:
-    needs: build
+    needs: connect
     runs-on: self-hosted
     steps:
       - name: Checkout source
