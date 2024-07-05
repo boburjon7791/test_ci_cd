@@ -15,28 +15,9 @@ on:
     branches: [ "prod" ]
 
 jobs:
-  connect:
+  build:
 
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-#      - name: Set up JDK 21
-#        uses: actions/setup-java@v4
-#        with:
-#          distribution: 'temurin'
-#          java-version: '21'
-#      - name: Build Project
-#        run: mvn clean install -DskipTests
-#      - name: Login to docker hub
-#        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-#      - name: Build Docker Image
-#        run: docker build -t bobur7761/test_ci_cd .
-#      - name: Publish Docker Image
-#        run: docker push bobur7761/test_ci_cd:latest
-  deploy:
-    needs: connect
-    runs-on: self-hosted
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
@@ -47,16 +28,22 @@ jobs:
           java-version: '21'
       - name: Build Project
         run: mvn clean install -DskipTests
-#      - name: Login to Docker Hub
-#        run: echo ${{secrets.DOCKER_PASSWORD}} | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
+      - name: Login to docker hub
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build Docker Image
-        run: |
-          docker build -t test_ci_cd .
-          docker image prune
-          y
-        #docker build build new version docker image
-        #docker image prune delete old version docker images
+        run: docker build -t bobur7761/test_ci_cd .
+      - name: Publish Docker Image
+        run: docker push bobur7761/test_ci_cd:latest
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        run: echo ${{secrets.DOCKER_PASSWORD}} | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
       - name: Pull and Start services using Docker Compose
         run: |
           docker-compose down
+          docker-compose pull
           docker-compose up -d
