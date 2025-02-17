@@ -1,8 +1,8 @@
 FROM maven:3.9-eclipse-temurin-21 AS builder
 WORKDIR /app
 COPY . .
-RUN chmod +x mvnw
-RUN ./mvnw clean package
+RUN #chmod +x mvnw
+RUN mvn clean package
 
 FROM openjdk:21
 WORKDIR /app
