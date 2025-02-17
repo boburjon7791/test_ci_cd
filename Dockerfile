@@ -1,4 +1,10 @@
+FROM maven:3.9-eclipse-temurin-21 AS builder
+WORKDIR /app
+COPY . .
+RUN ./mvnw clean package
+
 FROM openjdk:21
+WORKDIR /app
+COPY --from=builder /app/target/test_ci_cd.jar test_ci_cd.jar
 EXPOSE 8080
-ADD target/test_ci_cd.jar test_ci_cd.jar
-ENTRYPOINT ["java","-jar","/test_ci_cd.jar"]
+ENTRYPOINT ["java", "-jar", "/test_ci_cd.jar"]
