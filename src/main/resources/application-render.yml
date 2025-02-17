@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: postgresql://test_ci_cd_user:bhXZYozS9C2jPn12HCfKrMe6m71fV11q@dpg-cupal8a3esus738c0bm0-a/test_ci_cd
+    username: test_ci_cd_user
+    password: bhXZYozS9C2jPn12HCfKrMe6m71fV11q
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
