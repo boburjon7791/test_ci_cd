@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://centerbeam.proxy.rlwy.net:13520/railway
+    username: postgres
+    password: DOOKFvRyBexifqSotblRSFeBQnqpceoP
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
